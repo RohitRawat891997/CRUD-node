@@ -2,75 +2,134 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Priyanka Chauhan Ma'am</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In Respectful Memory</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+* { box-sizing: border-box; }
+
 body {
     margin: 0;
     min-height: 100vh;
     font-family: 'Poppins', sans-serif;
-    background: radial-gradient(circle at top, #fdeff9, #e8e9ff);
+    background: radial-gradient(circle at top, #0b0b15, #020207);
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    color: #fff;
 }
 
+/* 🌌 STAR BACKGROUND */
+.stars, .stars2 {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: 0;
+    left: 0;
+    background-repeat: repeat;
+    animation: moveStars 160s linear infinite;
+    z-index: 0;
+}
+
+.stars {
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 100px 120px, #fff, transparent);
+    opacity: 0.25;
+}
+
+.stars2 {
+    background-image:
+        radial-gradient(1.5px 1.5px at 60px 80px, #bbb, transparent),
+        radial-gradient(1.5px 1.5px at 160px 200px, #bbb, transparent);
+    animation-duration: 240s;
+    opacity: 0.15;
+}
+
+@keyframes moveStars {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1200px); }
+}
+
+/* 🕯️ CANDLE */
+.candle {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    font-size: 26px;
+    animation: flicker 1.6s infinite;
+    text-shadow: 0 0 12px rgba(255,180,80,0.9);
+    z-index: 3;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.75; transform: scale(1.08); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* 🏛️ MEMORIAL CARD */
 .card {
-    width: 360px;
-    border-radius: 26px;
-    background: rgba(255,255,255,0.92);
-    box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+    width: 390px;
+    max-width: 92%;
+    border-radius: 28px;
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(18px);
+    box-shadow: 0 0 60px rgba(200,120,255,0.25);
     overflow: hidden;
     text-align: center;
-    animation: fadeIn 1.4s ease forwards;
+    z-index: 2;
+    transition: transform 0.4s, box-shadow 0.4s;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 90px rgba(255,100,160,0.45);
 }
 
+/* 🖼️ IMAGE */
 .card img {
     width: 100%;
-    display: block;
-    animation: imgFade 1.5s ease forwards;
+    transition: opacity 1.2s ease, transform 1.2s ease;
 }
 
-@keyframes imgFade {
-    from { opacity: 0; transform: scale(1.05); }
-    to { opacity: 1; transform: scale(1); }
+.card img.fade-out {
+    opacity: 0;
+    transform: scale(1.08);
 }
 
 .content {
-    padding: 26px 24px 30px;
+    padding: 26px 24px 34px;
 }
 
 h1 {
     margin: 10px 0 12px;
     font-size: 22px;
-    font-weight: 600;
-    color: #6a1b9a;
+    color: #e6c9ff;
 }
 
 p {
-    font-size: 14.5px;
-    color: #666;
-    line-height: 1.7;
-    min-height: 80px;
+    font-size: 14.8px;
+    color: #d7d7e8;
+    line-height: 1.8;
+    min-height: 90px;
 }
 
+/* ❤️ HEART */
 .heart {
     margin-top: 16px;
     font-size: 30px;
-    color: #e91e63;
-    animation: heartbeat 1.4s infinite;
+    color: #ff4d8d;
+    animation: heartbeat 1.5s infinite;
+    text-shadow: 0 0 14px rgba(255,77,141,0.9);
 }
 
 @keyframes heartbeat {
     0% { transform: scale(1); }
-    40% { transform: scale(1.3); }
+    40% { transform: scale(1.35); }
     60% { transform: scale(1.15); }
     100% { transform: scale(1); }
 }
@@ -78,63 +137,119 @@ p {
 footer {
     margin-top: 14px;
     font-size: 12px;
-    color: #aaa;
+    color: #a9a9c5;
+}
+
+/* 🎶 MUSIC OVERLAY */
+.music-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.music-btn {
+    padding: 14px 26px;
+    border-radius: 40px;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    background: linear-gradient(135deg,#ff4d8d,#c77dff);
+    color: #fff;
+}
+
+/* 📱 MOBILE */
+@media(max-width:480px){
+    h1{font-size:20px;}
+    p{font-size:14px;}
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <!-- Dynamic image -->
-    <img id="profileImage" alt="Priyanka Chauhan Ma'am">
+<div class="stars"></div>
+<div class="stars2"></div>
 
+<div class="candle">🕯️</div>
+
+<!-- 🎶 Click-to-unlock Music -->
+<div class="music-overlay" id="musicOverlay">
+    <button class="music-btn" onclick="startMusic()">Tap to Enter Memorial</button>
+</div>
+
+<audio id="bgMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <img id="profileImage" alt="Priyanka Chauhan Ma'am">
     <div class="content">
         <h1>Priyanka Chauhan Ma'am</h1>
-
-        <!-- Dynamic quote -->
         <p id="quote"></p>
-
         <div class="heart">❤</div>
-        <footer>Forever respected. Forever remembered.</footer>
+        <footer id="footerText"></footer>
     </div>
 </div>
 
 <script>
-// 🔁 Random image on refresh
-const images = [
-    "pc.jpg",
-    "pc2.jpg",
-    "pc3.jpeg",
-    "pc4.jpg",
-    "pc5.jpeg"
+/* 🖼️ Images + Quotes SYNCED */
+const slides = [
+  { img:"pc.jpg", quote:"Some people teach not just subjects, but values." },
+  { img:"pc2.jpg", quote:"A guide in class, an inspiration for life." },
+  { img:"pc3.jpeg", quote:"True respect never fades with time." },
+  { img:"pc4.jpg", quote:"Memories live where gratitude resides." },
+  { img:"pc5.jpeg", quote:"A presence that continues in hearts." }
 ];
 
-const randomImage = images[Math.floor(Math.random() * images.length)];
-document.getElementById("profileImage").src = randomImage;
+const imgEl = document.getElementById("profileImage");
+const quoteEl = document.getElementById("quote");
+let index = 0;
 
-// 🔁 Random quote on refresh
-async function loadQuote() {
-    const quoteEl = document.getElementById("quote");
-
-    try {
-        const response = await fetch(
-            "https://api.quotable.io/random?tags=inspirational|wisdom"
-        );
-        const data = await response.json();
-        quoteEl.textContent = `"${data.content}"`;
-    } catch (error) {
-        const fallback = [
-            "Some thoughts arrive quietly.",
-            "Moments change, memories remain.",
-            "Certain feelings need no words."
-        ];
-        quoteEl.textContent =
-            fallback[Math.floor(Math.random() * fallback.length)];
-    }
+/* 🎞️ Typing effect */
+function typeText(text) {
+    quoteEl.textContent = "";
+    let i = 0;
+    const t = setInterval(() => {
+        quoteEl.textContent += text[i++];
+        if (i >= text.length) clearInterval(t);
+    }, 35);
 }
 
-loadQuote();
+/* 🔁 Slide change */
+function changeSlide() {
+    imgEl.classList.add("fade-out");
+    setTimeout(() => {
+        index = (index + 1) % slides.length;
+        imgEl.src = slides[index].img;
+        typeText(slides[index].quote);
+        imgEl.classList.remove("fade-out");
+    }, 1000);
+}
+
+/* Initial */
+imgEl.src = slides[0].img;
+typeText(slides[0].quote);
+setInterval(changeSlide, 9000);
+
+/* 📅 Date-based footer */
+const footer = document.getElementById("footerText");
+const today = new Date().toDateString();
+
+if (today.includes("Sep")) {
+    footer.textContent = "A special day of remembrance.";
+} else {
+    footer.textContent = "Forever respected. Forever remembered.";
+}
+
+/* 🎶 Music unlock */
+function startMusic(){
+    document.getElementById("bgMusic").play();
+    document.getElementById("musicOverlay").style.display="none";
+}
 </script>
 
 </body>
