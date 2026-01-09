@@ -1,1 +1,128 @@
-connected!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For Priyanka Chauhan Ma'am</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #fdeff9, #ecf0ff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Card fade-in */
+        .card {
+            background: white;
+            width: 380px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            text-align: center;
+            animation: fadeUp 1.5s ease forwards;
+            opacity: 0;
+        }
+
+        /* Image animation */
+        .card img {
+            width: 100%;
+            height: auto;
+            animation: imgFade 2s ease forwards;
+            opacity: 0;
+        }
+
+        .content {
+            padding: 25px;
+            animation: textFade 2.2s ease forwards;
+            opacity: 0;
+        }
+
+        h1 {
+            margin: 10px 0;
+            color: #6a1b9a;
+            font-size: 24px;
+        }
+
+        p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .heart {
+            font-size: 28px;
+            color: #e91e63;
+            margin-top: 10px;
+            animation: beat 1.5s infinite;
+        }
+
+        footer {
+            font-size: 12px;
+            color: #999;
+            margin-top: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes imgFade {
+            from {
+                transform: scale(1.05);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes textFade {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <img src="pc.jpg" alt="Priyanka Chauhan Ma'am">
+    <div class="content">
+        <h1>Priyanka Chauhan Ma'am</h1>
+        <p>
+            Some people leave a mark on our hearts without even trying.
+            Your presence, your grace, and your kindness are deeply missed.
+            You are remembered every single day.
+        </p>
+        <div class="heart">❤</div>
+        <footer>
+            Forever respected. Forever remembered.
+        </footer>
+    </div>
+</div>
+
+</body>
+</html>
