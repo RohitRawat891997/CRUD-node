@@ -11,19 +11,24 @@ const port = 3000;
 
 // Create connection to MySQL
 const db = mysql.createConnection({
-    host: 'testdb-1.c34egoce037f.ap-south-1.rds.amazonaws.com',
-    user: 'root',
-    password: '12345678',
-    database: 'testdb_1'
+    host: process.env.MYSQL_HOST || 'mysql',
+    user: process.env.MYSQL_USER || 'root',
+    password: process.env.MYSQL_PASSWORD || 'redhat',
+    database: process.env.MYSQL_DATABASE || 'keith'
 });
 
 // Connect to MySQL
-db.connect((err) => {
+function connectWithRetry() {
+  db.connect((err) => {
     if (err) {
-        throw err;
+      console.log("MySQL not ready, retrying in 5 sec...");
+      setTimeout(connectWithRetry, 5000);
+    } else {
+      console.log("MySQL Connected...");
     }
-    console.log('MySQL Connected...');
-});
+  });
+}
+connectWithRetry();
 
 // Serve the HTML file
 app.get('/', (req, res) => {
