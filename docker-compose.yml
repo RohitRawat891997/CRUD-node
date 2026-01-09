@@ -1,0 +1,28 @@
+services:
+  webserver:
+    build: .
+    ports:
+      - 3000:3000
+    environment: 
+        MYSQL_ROOT_PASSWORD: redhat
+        MYSQL_USER: root
+        MYSQL_HOST: mysql
+        MYSQL_DB: keith
+    networks:
+      - twotier
+    depends_on: 
+      - mysql
+
+  mysql:
+    image: mysql:5.6
+    ports: 
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: redhat
+      MYSQL_DB: keith
+    networks:
+      - twotier
+
+networks:
+  twotier:
+     driver: bridge
